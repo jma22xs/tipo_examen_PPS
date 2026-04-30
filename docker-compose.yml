@@ -1,0 +1,7 @@
+services:
+  galeria:
+    container_name: galeria
+    image: jma22x/fastapi:latest
+    ports:
+      - 80:8000
+    restart: always
