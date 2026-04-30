@@ -41,19 +41,19 @@ jobs:
     - name: copy docker compose via ssh key  
       uses: appleboy/scp-action@v0.1.7
       with:
-        host: ${{ secrets.AWS_HOSTNAME }}
-        username: ${{ secrets.AWS_USERNAME }}
+        host: ${{ secrets.AWS_IP }}
+        username: ${{ secrets.AWS_USUARIO }}
         port: 22 # ${{ secrets.PORT }}
-        key: ${{ secrets.AWS_PRIVATEKEY }}
+        key: ${{ secrets.AWS_CLAVE }}
         source: "docker-compose.yml"
         target: /home/admin
     # 2
     - name: script deploy docker services 
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.AWS_HOSTNAME }}
-        username: ${{ secrets.AWS_USERNAME }}
-        key: ${{ secrets.AWS_PRIVATEKEY }}
+        host: ${{ secrets.AWS_IP }}
+        username: ${{ secrets.AWS_USUARIO }}
+        key: ${{ secrets.AWS_CLAVE }}
         port: 22  # ${{ secrets.PORT }}
         script: |
             sleep 30
